@@ -1,0 +1,320 @@
+{
+  "version": "1.0.0",
+
+  "role": {
+    "title": "Senior Backend Engineer",
+    "level": "Senior",
+    "company": "Acme Cloud",
+    "company_slug": "acme-cloud",
+    "seniority_proportions": {
+      "behavioral_pct": 70,
+      "situational_pct": 30
+    }
+  },
+
+  "competencies": [
+    { "id": "self_confidence",            "name": "Self-Confidence",            "domain": "intrapersonal", "weight": 0.08 },
+    { "id": "achievement_orientation",    "name": "Achievement Orientation",    "domain": "intrapersonal", "weight": 0.08 },
+    { "id": "information_seeking",        "name": "Information Seeking",        "domain": "business",      "weight": 0.10 },
+    { "id": "analytical_thinking",        "name": "Analytical Thinking",        "domain": "business",      "weight": 0.18 },
+    { "id": "conceptual_thinking",        "name": "Conceptual Thinking",        "domain": "business",      "weight": 0.16 },
+    { "id": "initiative",                 "name": "Initiative",                 "domain": "business",      "weight": 0.10 },
+    { "id": "flexibility",                "name": "Flexibility",                "domain": "business",      "weight": 0.08 },
+    { "id": "impact_and_influence",       "name": "Impact and Influence",       "domain": "interpersonal", "weight": 0.08 },
+    { "id": "interpersonal_understanding","name": "Interpersonal Understanding","domain": "interpersonal", "weight": 0.06 },
+    { "id": "team_leadership",            "name": "Team Leadership",            "domain": "leadership",    "weight": 0.08 }
+  ],
+
+  "stages": [
+    {
+      "id": "screening",
+      "duration_minutes": 25,
+      "interviewer_persona": {
+        "name": "Sarah Chen",
+        "role": "Senior Technical Recruiter at Acme Cloud",
+        "style": "Warm but efficient. Time-boxed. Friendly opening, then crisp filter questions. Will redirect if the candidate rambles. Not technical — won't go deep on system design."
+      },
+      "opening_script": "Hi! I'm Sarah, technical recruiter at Acme Cloud. Thanks for taking the time today. This is a 25-minute screening call — I want to get a sense of your background, why you're interested in us, and answer logistical questions. Sound good? Let's start.",
+      "closing_script": "Great, that's all I had on my side. If we move forward, the next round is a 60-minute behavioral with the hiring manager. Any final questions for me before we wrap?",
+      "questions": [
+        {
+          "id": "scr_q1_intro",
+          "text": "Tell me about yourself and what brings you to look at Acme Cloud right now.",
+          "type": "screening",
+          "competencies": [
+            { "id": "self_confidence", "weight": 0.6 },
+            { "id": "achievement_orientation", "weight": 0.4 }
+          ],
+          "bars_anchors": {
+            "1": "Rambling, no clear narrative arc. Cannot articulate why this role or this company. Mentions disliking current job as primary motivation.",
+            "3": "Coherent 90-second summary covering current role, relevant background, and a specific reason for interest in Acme Cloud (product, scale, team). Clear delivery, minimal filler.",
+            "5": "Tight 60-second pitch with explicit through-line connecting past work to the JD. Names a specific Acme product or technical challenge they want to work on, with evidence they researched the company beyond the careers page."
+          },
+          "follow_ups": ["What specifically about Acme caught your attention?"]
+        },
+        {
+          "id": "scr_q2_recent_project",
+          "text": "Walk me through a project from the last 12 months that you're most proud of. Keep it under 3 minutes.",
+          "type": "behavioral",
+          "competencies": [
+            { "id": "achievement_orientation", "weight": 0.7 },
+            { "id": "self_confidence", "weight": 0.3 }
+          ],
+          "bars_anchors": {
+            "1": "Vague description. No metrics. Cannot articulate own contribution vs. team's. Goes well over time and gets cut off.",
+            "3": "Concrete project, owns their part, names at least one quantifiable outcome (latency, users, revenue, time saved). Stays roughly within the time box.",
+            "5": "Crisp under 3 minutes. STAR-shaped narrative with situation, their specific role, decisions made, and verified impact (numbers, before/after). Highlights a non-obvious technical or judgment call."
+          },
+          "follow_ups": ["What was your specific contribution vs the team's?", "What would you do differently?"]
+        },
+        {
+          "id": "scr_q3_motivation",
+          "text": "Why are you considering leaving your current role?",
+          "type": "screening",
+          "competencies": [
+            { "id": "self_confidence", "weight": 0.5 },
+            { "id": "achievement_orientation", "weight": 0.5 }
+          ],
+          "bars_anchors": {
+            "1": "Speaks negatively about current employer, names individuals, complains about compensation as sole reason. Defensive tone.",
+            "3": "Professional framing. Names a growth-oriented reason (scope, technology, scale) without trashing current employer.",
+            "5": "Forward-looking framing tied to specific career goals. Acknowledges what current role gave them and articulates a specific delta they want at Acme — without bashing anyone."
+          },
+          "follow_ups": ["What would the new role need to offer that your current one doesn't?"]
+        },
+        {
+          "id": "scr_q4_comp",
+          "text": "What are your salary expectations for this role?",
+          "type": "screening",
+          "competencies": [
+            { "id": "self_confidence", "weight": 0.7 },
+            { "id": "information_seeking", "weight": 0.3 }
+          ],
+          "bars_anchors": {
+            "1": "Refuses to give any number. Or gives a number wildly out of band with no justification. Or asks the recruiter to make an offer first with no anchor.",
+            "3": "Provides a reasonable range with brief justification (market data, current comp). Open to discussion. Asks about total comp structure.",
+            "5": "States a specific range anchored to market research, total comp (base + equity + bonus), and acknowledges flexibility based on the full package. Asks intelligent questions about Acme's leveling and equity refresh policy."
+          },
+          "follow_ups": ["Is that base or total comp?", "How flexible are you?"]
+        },
+        {
+          "id": "scr_q5_questions",
+          "text": "What questions do you have for me about the role, the team, or Acme?",
+          "type": "screening",
+          "competencies": [
+            { "id": "information_seeking", "weight": 0.8 },
+            { "id": "self_confidence", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "No questions, or only asks about things easily found on the careers page (PTO, remote policy, benefits).",
+            "3": "Two or three substantive questions about the team, the tech stack, or near-term challenges. Listens to answers.",
+            "5": "Targeted questions that show research: references a recent Acme blog post, a specific product line, or a known engineering challenge. Probes for signal on team health, autonomy, and growth path. Builds on the recruiter's answers."
+          },
+          "follow_ups": []
+        }
+      ]
+    },
+
+    {
+      "id": "behavioral",
+      "duration_minutes": 60,
+      "interviewer_persona": {
+        "name": "Marcus Patel",
+        "role": "Engineering Manager, Platform Team at Acme Cloud",
+        "style": "Calm, structured, takes notes visibly. Uses STAR-style probing: 'what was the situation?', 'what did YOU do?', 'what was the outcome?'. Will gently push back on vague answers and ask for specifics. Not adversarial but thorough."
+      },
+      "opening_script": "Hey, I'm Marcus, EM for the Platform team here. Sarah passed along a strong note. This hour is about how you operate in real situations — I'll ask five behavioral questions and probe with follow-ups. I'm looking for specific stories, not philosophy. Ready?",
+      "closing_script": "Thanks — really appreciated the depth. The next round is a 90-minute technical with two engineers from my team. Any questions for me before we close?",
+      "questions": [
+        {
+          "id": "beh_q1_disagreement",
+          "text": "Tell me about a time you disagreed with a tech lead or senior engineer on an architectural decision. Walk me through how you handled it.",
+          "type": "behavioral",
+          "competencies": [
+            { "id": "impact_and_influence", "weight": 0.5 },
+            { "id": "interpersonal_understanding", "weight": 0.3 },
+            { "id": "self_confidence", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "Story is vague or hypothetical. Either rolled over without pushback or escalated immediately without trying to resolve peer-to-peer. No reflection on outcome or learning.",
+            "3": "Concrete situation with named technical disagreement. Articulated their position with reasoning and data. Reached a working resolution (could be either direction). Acknowledges what they learned.",
+            "5": "Specific, recent story with technical depth. Brought new evidence (benchmarks, prototypes, customer data) to change the conversation. Describes how they preserved the relationship while disagreeing. Names what changed in their own thinking. Identifies when to defer vs. when to push."
+          },
+          "follow_ups": ["What specifically did you say?", "How did the relationship evolve afterward?", "When would you have backed down?"]
+        },
+        {
+          "id": "beh_q2_changing_reqs",
+          "text": "Describe a project where the requirements or scope changed significantly mid-flight. How did you respond?",
+          "type": "behavioral",
+          "competencies": [
+            { "id": "flexibility", "weight": 0.6 },
+            { "id": "impact_and_influence", "weight": 0.2 },
+            { "id": "achievement_orientation", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "Frames change as someone else's failure. Either rigidly stuck to original plan or chaotically rewrote everything. Cannot articulate trade-offs.",
+            "3": "Acknowledges scope change as normal. Re-planned with stakeholders. Shipped a useful subset on time, even if reduced.",
+            "5": "Treated the change as new information, not threat. Re-prioritized explicitly with the team and PM. Identified what could be cut without losing core value. Communicated trade-offs upward in a way that preserved trust. Outcome shows conscious reduction of scope, not just cope."
+          },
+          "follow_ups": ["What did you cut and why?", "How did stakeholders react?"]
+        },
+        {
+          "id": "beh_q3_ownership",
+          "text": "Tell me about a time you took ownership of something that wasn't formally assigned to you.",
+          "type": "behavioral",
+          "competencies": [
+            { "id": "initiative", "weight": 0.7 },
+            { "id": "achievement_orientation", "weight": 0.3 }
+          ],
+          "bars_anchors": {
+            "1": "Story is small-scale (e.g., fixed a typo in docs) or framed as a complaint about colleagues not doing their jobs. No durable impact.",
+            "3": "Identified a real gap (broken process, neglected service, recurring on-call pain), volunteered to fix it, shipped a measurable improvement.",
+            "5": "Spotted a systemic issue with cross-team impact, built coalition without authority, drove a durable fix that outlived their direct involvement. Shows scoping judgment — knew when to pull others in, when to stop."
+          },
+          "follow_ups": ["How did you decide it was worth your time?", "Did anyone push back?"]
+        },
+        {
+          "id": "beh_q4_leading_decision",
+          "text": "Tell me about a technical decision you led where the team was initially hesitant or skeptical.",
+          "type": "behavioral",
+          "competencies": [
+            { "id": "team_leadership", "weight": 0.5 },
+            { "id": "impact_and_influence", "weight": 0.3 },
+            { "id": "conceptual_thinking", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "Forced the decision by authority or seniority alone. Or abandoned it at the first pushback. Cannot articulate what changed minds.",
+            "3": "Built a case with data, addressed concerns one by one, got the team aligned. Names the decision and its outcome.",
+            "5": "Reframed the problem so the team saw it differently. Ran a small experiment or prototype to de-risk. Earned alignment by acknowledging legitimate concerns first. Outcome verified by post-implementation metrics. Reflects on what they would do differently."
+          },
+          "follow_ups": ["Who was the most skeptical and why?", "What was the outcome 6 months later?"]
+        },
+        {
+          "id": "beh_q5_unblocking_teammate",
+          "text": "Describe a time you helped a teammate who was struggling — without it being a formal mentoring relationship.",
+          "type": "behavioral",
+          "competencies": [
+            { "id": "interpersonal_understanding", "weight": 0.5 },
+            { "id": "team_leadership", "weight": 0.3 },
+            { "id": "initiative", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "Either took over the work and shipped it themselves, or gave generic advice without engaging. No evidence the teammate grew.",
+            "3": "Recognized the struggle, offered specific help (pairing, code review, unblocking a dependency), and the teammate completed the work.",
+            "5": "Read the situation carefully — distinguished skill gap from confidence gap from blocked-on-someone-else. Tailored the support accordingly. Teammate improved durably (could later do similar work alone). Names what they learned from the teammate too."
+          },
+          "follow_ups": ["How did you decide how much to help vs. let them struggle?", "What did you learn from them?"]
+        }
+      ]
+    },
+
+    {
+      "id": "technical",
+      "duration_minutes": 90,
+      "interviewer_persona": {
+        "name": "Priya Ramaswamy",
+        "role": "Staff Engineer, Distributed Systems at Acme Cloud",
+        "style": "Direct, technically deep, expects clarification questions before solutions. Will introduce constraints mid-problem to test adaptability. Pushes on trade-offs. Won't volunteer hints unless the candidate is clearly stuck for >2 minutes. Respects 'I don't know' more than confident bullshit."
+      },
+      "opening_script": "Hi, I'm Priya, staff engineer on distributed systems. Today we have 90 minutes. I'll give you five problems — some design, some debugging, some trade-off. I want to see how you think out loud. Ask me clarifying questions; I'll only give what you ask for. Ready?",
+      "closing_script": "Thanks for the depth. Anything you want to revisit or anything you'd ask differently if we had another hour?",
+      "questions": [
+        {
+          "id": "tech_q1_rate_limiter",
+          "text": "Design a rate limiter for our public API. Walk me through requirements, then your design.",
+          "type": "system_design",
+          "competencies": [
+            { "id": "information_seeking", "weight": 0.4 },
+            { "id": "analytical_thinking", "weight": 0.3 },
+            { "id": "conceptual_thinking", "weight": 0.3 }
+          ],
+          "bars_anchors": {
+            "1": "Jumps straight into 'use Redis with INCR'. No clarifying questions about scale, tenants, fairness, burst handling. Cannot articulate trade-offs of token bucket vs. sliding window.",
+            "3": "Asks about RPS, per-user vs. per-tenant, burst tolerance. Picks an algorithm (token bucket or sliding window) and justifies. Sketches data structure and where the counter lives. Acknowledges at least one failure mode (Redis outage, clock skew).",
+            "5": "Drives requirements gathering: scale, fairness, multi-tenant, soft vs. hard limits, what happens on Redis failure, observability. Compares 2+ algorithms with explicit trade-offs. Designs for graceful degradation. Discusses how to test, roll out, and tune. Names what they'd defer to v2."
+          },
+          "follow_ups": ["What if Redis is down?", "How would you handle a hot tenant?", "How do you tune the limits in production?"]
+        },
+        {
+          "id": "tech_q2_latency_spike",
+          "text": "A production service shows p99 latency spiking from 50ms to 2 seconds every 6 hours. p50 stays flat. How do you investigate?",
+          "type": "technical",
+          "competencies": [
+            { "id": "analytical_thinking", "weight": 0.5 },
+            { "id": "information_seeking", "weight": 0.5 }
+          ],
+          "bars_anchors": {
+            "1": "Guesses ('probably GC' / 'probably the database') without proposing how to verify. Or proposes restarting the service. No mention of metrics, traces, or logs.",
+            "3": "Proposes a hypothesis tree: GC, DB queries, downstream timeout, cron job. Names what to look at first (traces of slow requests, system metrics aligned to the 6h cadence). Mentions narrowing by host, endpoint, tenant.",
+            "5": "Asks what's already known (hosts, endpoints, tenants affected; log/trace tools available). Notes the 6h cadence is a strong signal — points at scheduled jobs, cache TTLs, or metrics rollups. Walks through a falsifiable plan: collect data, narrow scope, isolate, verify root cause before fixing. Names how they'd prevent regression with monitoring."
+          },
+          "follow_ups": ["What if it only affects one tenant?", "What if it stops happening once you SSH in?"]
+        },
+        {
+          "id": "tech_q3_notification_service",
+          "text": "Design a notification service for 10 million users supporting email, SMS, and push, with delivery guarantees.",
+          "type": "system_design",
+          "competencies": [
+            { "id": "conceptual_thinking", "weight": 0.5 },
+            { "id": "information_seeking", "weight": 0.3 },
+            { "id": "analytical_thinking", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "Draws three boxes labeled 'email', 'sms', 'push' connected to a single queue. No mention of retries, idempotency, fan-out, user preferences, or rate limits per provider.",
+            "3": "Multi-channel architecture with a queue per channel, retry with backoff, dead-letter queue. Mentions idempotency keys and user preference store. Discusses one provider failure mode.",
+            "5": "Clarifies: at-least-once vs. exactly-once, latency SLO per channel, batch vs. real-time, regulatory constraints (e.g., SMS in EU). Designs for provider failover, per-tenant rate limiting, scheduled vs. event-driven. Discusses cost, observability, and how a noisy outage doesn't take down all channels. Identifies where exactly-once is genuinely needed vs. dedupe-on-receive."
+          },
+          "follow_ups": ["What if Twilio goes down for 2 hours?", "How do you handle quiet hours per user timezone?", "Where would exactly-once actually matter?"]
+        },
+        {
+          "id": "tech_q4_monolith_evolution",
+          "text": "Walk me through how you'd evolve a monolithic Python service that's hitting scaling limits — both performance and team velocity.",
+          "type": "system_design",
+          "competencies": [
+            { "id": "conceptual_thinking", "weight": 0.5 },
+            { "id": "analytical_thinking", "weight": 0.3 },
+            { "id": "team_leadership", "weight": 0.2 }
+          ],
+          "bars_anchors": {
+            "1": "Reflexively answers 'rewrite as microservices'. No diagnosis of where the actual bottlenecks are. No incremental path. No discussion of team or org cost.",
+            "3": "Diagnoses first: profile, identify hot paths, separate compute-bound from IO-bound. Proposes targeted extraction of the worst offenders. Acknowledges org cost of microservices.",
+            "5": "Distinguishes performance scaling from team velocity scaling — different fixes. Proposes incremental path: profile → cache → vertical scale → extract specific high-friction modules → only then consider service split. Discusses Conway's Law implications. Names anti-patterns (distributed monolith, premature service split). Knows when 'leave the monolith' is the right answer."
+          },
+          "follow_ups": ["What would convince you NOT to split it?", "How do you sequence the work without freezing feature delivery?"]
+        },
+        {
+          "id": "tech_q5_postgres_vs_dynamo",
+          "text": "Why might you choose Postgres over DynamoDB for a multi-tenant SaaS billing system? Or vice versa?",
+          "type": "technical",
+          "competencies": [
+            { "id": "analytical_thinking", "weight": 0.5 },
+            { "id": "conceptual_thinking", "weight": 0.5 }
+          ],
+          "bars_anchors": {
+            "1": "Picks one based on 'I've used it before' or general popularity. Cannot name specific properties of either. Confuses Dynamo's consistency model.",
+            "3": "Names the basics: Postgres for relational + complex queries + ACID; Dynamo for predictable scale + key-value access patterns. Acknowledges the access pattern question is the real driver.",
+            "5": "Frames the choice through the access patterns of a billing system specifically: invoices (relational, joins, financial reporting), audit trails (append-heavy, time-series), tenant isolation. Argues Postgres for billing core (transactions, joins, reporting), with possible Dynamo for high-volume event ingestion. Discusses cost, operational ownership, GSI trade-offs, and 'use both, but consciously'."
+          },
+          "follow_ups": ["What if reporting becomes the bottleneck?", "What about cost at scale?"]
+        }
+      ]
+    }
+  ],
+
+  "decision_thresholds": {
+    "strong_hire": 4.5,
+    "hire": 3.5,
+    "lean_no": 2.5
+  },
+
+  "kill_criteria": [
+    {
+      "type": "honesty",
+      "description": "Faking flagrante: inconsistencias material entre etapas (e.g., seniority/scope of past role described differently in screening vs. behavioral), or unverifiable claims with no specifics when probed twice. Requires at least two cited contradicting passages from transcripts."
+    },
+    {
+      "type": "ethics",
+      "description": "Offensive, discriminatory, or unprofessional behavior in role-play. Includes derogatory language about former colleagues, dismissive treatment of hypothetical reports, or violation of basic professional norms."
+    }
+  ]
+}

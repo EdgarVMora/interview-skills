@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://interview-skills.local/schemas/plan.json",
+  "title": "InterviewPlan",
+  "description": "Canonical interview plan validated against rubric-framework.md and methodology.md.",
+  "type": "object",
+  "required": ["version", "role", "competencies", "stages", "decision_thresholds", "kill_criteria"],
+  "additionalProperties": false,
+
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semver of the plan format. Bump on any structural change."
+    },
+
+    "role": {
+      "type": "object",
+      "required": ["title", "level", "company", "seniority_proportions"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "minLength": 2 },
+        "level": {
+          "type": "string",
+          "enum": ["Junior", "Mid", "Senior", "Staff", "Principal"]
+        },
+        "company": { "type": "string", "minLength": 1 },
+        "company_slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Used in specs/<slug>-<YYYYMMDD>/ session paths."
+        },
+        "seniority_proportions": {
+          "type": "object",
+          "required": ["behavioral_pct", "situational_pct"],
+          "additionalProperties": false,
+          "properties": {
+            "behavioral_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+            "situational_pct": { "type": "number", "minimum": 0, "maximum": 100 }
+          }
+        }
+      }
+    },
+
+    "competencies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "domain", "weight"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "achievement_orientation",
+              "analytical_thinking",
+              "conceptual_thinking",
+              "developing_others",
+              "flexibility",
+              "impact_and_influence",
+              "information_seeking",
+              "initiative",
+              "interpersonal_understanding",
+              "organizational_awareness",
+              "self_confidence",
+              "team_leadership"
+            ]
+          },
+          "name": { "type": "string" },
+          "domain": {
+            "type": "string",
+            "enum": ["intrapersonal", "interpersonal", "business", "leadership"]
+          },
+          "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+
+    "stages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "interviewer_persona", "duration_minutes", "questions"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["screening", "behavioral", "technical", "cultural"]
+          },
+          "interviewer_persona": {
+            "type": "object",
+            "required": ["name", "role", "style"],
+            "properties": {
+              "name": { "type": "string" },
+              "role": { "type": "string" },
+              "style": { "type": "string" }
+            }
+          },
+          "duration_minutes": { "type": "integer", "minimum": 5, "maximum": 180 },
+          "opening_script": { "type": "string" },
+          "closing_script": { "type": "string" },
+          "questions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "text", "type", "competencies", "bars_anchors"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+                "text": { "type": "string", "minLength": 10 },
+                "type": {
+                  "type": "string",
+                  "enum": ["behavioral", "situational", "technical", "system_design", "screening"]
+                },
+                "competencies": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "weight"],
+                    "properties": {
+                      "id": { "type": "string" },
+                      "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+                    }
+                  }
+                },
+                "bars_anchors": {
+                  "type": "object",
+                  "required": ["1", "3", "5"],
+                  "properties": {
+                    "1": { "type": "string", "minLength": 10 },
+                    "3": { "type": "string", "minLength": 10 },
+                    "5": { "type": "string", "minLength": 10 }
+                  }
+                },
+                "follow_ups": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "decision_thresholds": {
+      "type": "object",
+      "required": ["strong_hire", "hire", "lean_no"],
+      "additionalProperties": false,
+      "properties": {
+        "strong_hire": { "type": "number", "default": 4.5 },
+        "hire": { "type": "number", "default": 3.5 },
+        "lean_no": { "type": "number", "default": 2.5 }
+      }
+    },
+
+    "kill_criteria": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "description"],
+        "properties": {
+          "type": { "type": "string", "enum": ["honesty", "ethics"] },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}
