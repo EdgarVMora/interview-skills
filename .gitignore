@@ -1,0 +1,19 @@
+# Session artifacts (per-run, never committed)
+.claude/specs/
+
+# Manual inputs (JDs, dossiers, scratch material)
+data/
+
+# Logs
+*.log
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
