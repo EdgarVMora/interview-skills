@@ -14,23 +14,42 @@ BARS, competencias y reglas de decisión viven en
 
 ## Comandos disponibles
 
-| Slash command          | Función                                                      |
-| ---------------------- | ------------------------------------------------------------ |
-| `/prep <url\|texto>`   | Orquestador end-to-end: extract-jd → research → design-plan |
-| `/extract-jd <input>`  | JD crudo → `jd.md` estructurado                              |
-| `/design-plan`         | `jd.md` + `dossier.md` → `plan.json` validado                |
-| `/interview <stage>`   | Manual. Conduce screening / behavioral / technical en EN     |
-| `/evaluate`            | Manual. LLM-as-judge sobre transcript → `report.html`        |
+| Slash command          | Función                                                                  |
+| ---------------------- | ------------------------------------------------------------------------ |
+| `/prep <url\|texto>`   | Orquestador end-to-end: extract-jd → research → render-html → design-plan |
+| `/extract-jd <input>`  | JD crudo → `jd.md` estructurado                                          |
+| `/design-plan`         | `jd.md` + `dossier.md` → `plan.json` validado                            |
+| `/interview <stage>`   | Manual. Conduce screening / behavioral / technical en EN                 |
+| `/evaluate`            | Manual. LLM-as-judge sobre transcript → `report.html`                    |
 
 `stage` ∈ {`screening`, `behavioral`, `technical`}.
 
 ## Cómo correr el sistema
 
-1. Configurar Perplexity MCP (Fase 3, no antes):
-   `claude mcp add perplexity --env PERPLEXITY_API_KEY="..." -- npx -y <pkg>`
-2. `/prep <url>` — avisa que la investigación tarda 30-90s.
+1. Configurar Perplexity MCP una sola vez (key queda fuera del repo, en
+   `~/.claude.json` — scope `user`):
+   ```
+   claude mcp add perplexity \
+     --scope user \
+     --env PERPLEXITY_API_KEY="<tu-key>" \
+     -- npx -y @perplexity-ai/mcp-server
+   ```
+   Verificar con `claude mcp list`. Reversible con
+   `claude mcp remove perplexity --scope user`.
+2. `/prep <url>` — avisa que la investigación tarda 30-90s y cuesta ~$0.80
+   USD por run. Si la sesión ya tiene `dossier.md`, pide confirmación
+   antes de re-correr Perplexity (sobreescribir = $0.80 más).
 3. `/interview screening` → `behavioral` → `technical` (en orden, manual).
 4. `/evaluate` → abre `.claude/specs/<sesión>/report.html`.
+
+**Salida de `/prep` por sesión** (`.claude/specs/<slug>/`):
+- `jd.md` — JD estructurado (extract-jd)
+- `dossier.md` — investigación de la empresa (company-researcher, Perplexity)
+- `dossier.html` — vista de estudio self-contained (renderizado de dossier.md
+  siguiendo `templates/dossier-html-structure.md`)
+- `plan.json` — plan validado contra `templates/plan-schema.json`
+- `_log.md` — registro de cada sub-paso
+- `_costs.md` (raíz de `specs/`) — ledger acumulado de costos de Perplexity
 
 ## Convenciones
 
